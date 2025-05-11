@@ -46,6 +46,7 @@ class LaneDataset(Dataset):
         gt = self.resize_gt(gt)
 
         img = T.ToTensor()(img)
-        gt = torch.from_numpy(np.asarray(gt))
+        gt = torch.from_numpy(np.asarray(gt).copy())  # thêm .copy() để tránh cảnh báo
 
         return img, gt
+
